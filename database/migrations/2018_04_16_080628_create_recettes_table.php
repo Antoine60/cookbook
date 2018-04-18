@@ -22,7 +22,6 @@ class CreateRecettesTable extends Migration
             $table->string('region')->nullable();
             $table->string('keyswords')->nullable();
             $table->string('type_repas')->nullable();
-            $table->string('rating')->nullable();
             $table->timestamps();
         });
     }
