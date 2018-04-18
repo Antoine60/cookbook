@@ -1,16 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Recette</h1>
+    <h1>Recette : {{ $recette->name }}</h1>
     <div class="col-xs-4">
-        @foreach($recette->ingredients as $ingredient)
-            {{ $ingredient }}
-        @endforeach
+        <ul>
+            @foreach($recette->ingredients as $ingredient)
+                <li>{{ $ingredient->quantite }} {{ $ingredient->mesure }} - {{ $ingredient->nom }}
+            @endforeach
+        </ul>
     </div>
     <div class="col-xs-4">
-        @foreach($recette->etapes as $etape)
-            {{ $etape }}
-        @endforeach
+        <ol>
+            @foreach($recette->etapes->sortBy('position') as $etape)
+                <li>{{ $etape->description }}</li>
+            @endforeach
+        </ol>
+
     </div>
     <div class="row">
         <div class="col-xs-12">

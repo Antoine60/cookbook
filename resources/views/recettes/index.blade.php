@@ -7,7 +7,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">{{$recette->name}}</div>
                 <div class="panel-body"><img src="{{$recette->image}}"/></div>
-                <div class="panel-footer"><a href="recettes/{{$recette->id}}">Détail</a>{{$recette->rating}}</div>
+                <div class="panel-footer"><a href="recettes/{{$recette->id}}">Détail</a><div class="right">{{$recette->rating}} / 5 </div></div>
             </div>
         </div>
     @endforeach
