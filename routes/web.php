@@ -18,9 +18,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'RecetteController@all')->name('home');
-Route::get('/top', 'RecetteController@top')->name('top');
+Route::get('/top', 'RecetteController@top')->name('recettes.top');
+Route::get('/top_users', 'UserController@top')->name('users.top');
 
-Route::resource('recettes','RecetteController');
+Route::resource('recettes', 'RecetteController');
 
 Route::get('resizeImage', 'ImageController@resizeImage');
-Route::post('resizeImagePost',['as'=>'resizeImagePost','uses'=>'ImageController@resizeImagePost']);
+Route::post('resizeImagePost', ['as' => 'resizeImagePost', 'uses' => 'ImageController@resizeImagePost']);
