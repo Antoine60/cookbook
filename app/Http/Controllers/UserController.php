@@ -13,6 +13,13 @@ use Intervention\Image\ImageManager;
 
 class UserController extends Controller
 {
+
+    public function show($id)
+    {
+        return view('users.show', ['user' => User::findOrFail($id)]);
+
+    }
+
     public function top()
     {
         $users = User::all();
