@@ -16,7 +16,6 @@ class UserController extends Controller
     public function top()
     {
         $users = User::all();
-
         foreach ($users as $user) {
 
             $recettes = $user->recettes;
@@ -26,8 +25,7 @@ class UserController extends Controller
             foreach ($recettes as $recette) {
                 $totalSumRating += $recette->sumRating;
                 $moyRating += $recette->sumRating * $recette->averageRating;
-                if ($recette->averageRating > $topRecetteRating)
-                {
+                if ($recette->averageRating > $topRecetteRating) {
                     $topRecetteRating = $recette->averageRating;
                     $user->topRecette = $recette;
                 }
@@ -35,9 +33,15 @@ class UserController extends Controller
             $user->totalSumRating = $totalSumRating;
             $user->avgRating = $moyRating / $totalSumRating;
             $users_displays[] = $user;
-            return view('users/top', ['users' => $users_displays]);
 
         }
+        usort($users_displays, function($a, $b)
+        {
+            return strcmp(-$a->avgRating, $b->avgRating);
+        });
+
+        return view('users/top', ['users' => $users_displays]);
+
 
     }
 }
