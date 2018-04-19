@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Les dernières recettes</h1>
-    @foreach($recettes->sortByDesc('created_at') as $recette)
+    <h1>Les meilleures recettes</h1>
+    @foreach($recettes as $recette)
         <div class="col-xs-4">
             <div class="panel panel-default">
                 <div class="panel-heading">{{$recette->name}}</div>

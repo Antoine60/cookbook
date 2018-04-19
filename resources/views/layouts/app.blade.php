@@ -89,8 +89,8 @@
             <div class="col-md-offset-1 col-md-2">
                 <div><a href="{{ route('home') }}">Accueil</a></div>
                 <div><a href="{{ route('recettes.index') }}">Mes recettes</a></div>
-                <div><a href="{{ route('home') }}">Top recettes</a></div>
-                <div><a href="{{ route('home') }}">Top internautes</a></div>
+                <div><a href="{{ route('top') }}">Top recettes</a></div>
+                <div><a href="{{ route('top') }}">Top internautes</a></div>
 
             </div>
             <div class="col-md-7">

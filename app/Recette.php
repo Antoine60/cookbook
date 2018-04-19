@@ -21,4 +21,9 @@ class Recette extends Model
     {
         return $this->hasMany('App\Etape');
     }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

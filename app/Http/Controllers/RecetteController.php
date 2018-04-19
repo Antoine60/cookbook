@@ -13,6 +13,22 @@ use Intervention\Image\ImageManager;
 
 class RecetteController extends Controller
 {
+    public function all()
+    {
+        $recettes = Recette::all();
+        return view('home', ['recettes' => $recettes]);
+    }
+
+    public function top()
+    {
+        $recettes = Recette::all();
+
+        $custom = $recettes->sortByDesc(function ($item) {
+            return $item->userAverageRating;
+        })->values();
+        return view('recettes/top', ['recettes' => $custom]);
+    }
+
     public function index()
     {
         $user = User::find(Auth::user()->id);
@@ -40,11 +56,10 @@ class RecetteController extends Controller
         $recette->user_id = Auth::user()->id;
         $imageManager = new ImageManager();
         $image = $imageManager->make($request->file('photo'))->resize(200, 200);
-        $image->save('images/'. $image->filename .'.jpg');
-        $recette->image = '/images/'. $image->filename .'.jpg';
+        $image->save('images/' . $image->filename . '.jpg');
+        $recette->image = '/images/' . $image->filename . '.jpg';
         $recette->fill($fields);
         $recette->save();
-        dd('stop');
 
         //register ingredients
         foreach ($request->ingredients as $ingredient_brut) {

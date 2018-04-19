@@ -17,7 +17,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'RecetteController@all')->name('home');
+Route::get('/top', 'RecetteController@top')->name('top');
 
 Route::resource('recettes','RecetteController');
 
