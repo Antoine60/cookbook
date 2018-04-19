@@ -3,7 +3,10 @@
 @section('content')
     <h1>Recette : {{ $recette->name }} </h1> par {{ $recette->user->name }}
     <div>
-        Note : {!! number_format($recette->averageRating, 1) !!}
+        Votre note : {{ $recette->ratings()->where('user_id', \Illuminate\Support\Facades\Auth::id())->first()->rating }}
+    </div>
+    <div>
+        Note globale : {!! number_format($recette->averageRating, 1) !!}
     </div>
     <div class="col-xs-4">
         <h2>Ingrédients</h2>

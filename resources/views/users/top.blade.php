@@ -15,7 +15,11 @@
             <tr>
                 <td><a href="users/{{$user->id}}">{{ $user->name }}</a></td>
                 <td>{{ number_format($user->avgRating,1) }} (sur {{$user->totalSumRating}} votes)</td>
-                <td><a href="recettes/{{$user->topRecette->id}}">{{$user->topRecette->name}}</a></td>
+                <td>
+                    @isset($user->topRecette)
+                        <a href="recettes/{{$user->topRecette->id}}">{{$user->topRecette->name}}</a>
+                    @endisset
+                </td>
             </tr>
         @endforeach
         </tbody>
