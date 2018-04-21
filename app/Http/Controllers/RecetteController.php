@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Image;
 use Intervention\Image\ImageManager;
+use willvincent\Rateable\Rating;
 
 class RecetteController extends Controller
 {
@@ -17,6 +18,24 @@ class RecetteController extends Controller
     {
         $recettes = Recette::all();
         return view('home', ['recettes' => $recettes]);
+    }
+
+    public function update_note(Request $request, $id)
+    {
+
+        $recette = Recette::find($id);
+        $newRating = $request->input('note');
+
+        $rating = Rating::where([
+            ['user_id', Auth::id()],
+            ['rateable_id', $recette->id]
+        ])->first();
+
+        $rating->rating = $newRating;
+
+        $recette->ratings()->save($rating);
+
+        return redirect(route('recettes.show', ['recette' => $id]));
     }
 
     public function top()
@@ -38,7 +57,11 @@ class RecetteController extends Controller
 
     public function show($id)
     {
-        return view('recettes.show', ['recette' => Recette::findOrFail($id)]);
+        $recette = Recette::findOrFail($id);
+        $canVote = 0;
+        if ($recette->user->id != \Auth::id())
+            $canVote = 1;
+        return view('recettes.show', ['recette' => $recette, 'canVote' => $canVote]);
 
     }
 

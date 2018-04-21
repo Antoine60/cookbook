@@ -2,11 +2,24 @@
 
 @section('content')
     <h1>Recette : {{ $recette->name }} </h1> par {{ $recette->user->name }}
+    @if ($canVote)
+        <div>
+            Votre note
+            :
+            <form method="POST" action="{{route('recettes.update_note', ['id' => $recette->id])}}">
+                @csrf
+                <select name="note" onchange="this.form.submit();">
+                    @for($i=1;$i<6;$i++)
+                        <option value={{$i}} @if ($recette->userSumRating  == $i) selected @endif >
+                            {{$i}}
+                        </option>
+                    @endfor
+                </select>
+            </form>
+        </div>
+    @endif
     <div>
-        Votre note : {{ $recette->ratings()->where('user_id', \Illuminate\Support\Facades\Auth::id())->first()->rating }}
-    </div>
-    <div>
-        Note globale : {!! number_format($recette->averageRating, 1) !!}
+        Note globale : {!! number_format($recette->averageRating, 1) !!} ( {{ $recette->sumRating }} votes)
     </div>
     <div class="col-xs-4">
         <h2>Ingrédients</h2>

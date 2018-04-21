@@ -38,14 +38,13 @@ class UserController extends Controller
                 }
             }
             $user->totalSumRating = $totalSumRating;
-            if ($totalSumRating > 0 ){
+            if ($totalSumRating > 0) {
                 $user->avgRating = $moyRating / $totalSumRating;
             }
             $users_displays[] = $user;
 
         }
-        usort($users_displays, function($a, $b)
-        {
+        usort($users_displays, function ($a, $b) {
             return strcmp($b->avgRating, $a->avgRating);
         });
 
