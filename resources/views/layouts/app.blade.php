@@ -17,15 +17,10 @@
 
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css"
-          rel="stylesheet">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
     <link href="/css/bootstrap-tagsinput.css" rel="stylesheet">
-    <script src="/js/bootstrap-tagsinput.js"></script>
-    <script src="/js/jquery.crs.min.js"></script>
-
+    <script type="text/javascript" src="/js/recette.js"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -35,7 +30,24 @@
     {{--<link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
 </head>
 <body>
+<div class="content">
+    <div id="myModal" class="modal fade bd-example-modal-lg">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-header">
+                <h4 class="modal-title">Nouvelle recette</h4>
+            </div>
+            <div class="modal-content">
+                <!-- Content will be loaded here from "remote.php" file -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 <div id="app">
+
+
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
@@ -84,20 +96,19 @@
         </div>
     </nav>
 
-    <main>
-        <div class="row">
-            <div class="col-md-offset-1 col-md-2">
-                <div><a href="{{ route('home') }}">Accueil</a></div>
-                <div><a href="{{ route('recettes.index') }}">Mes recettes</a></div>
-                <div><a href="{{ route('recettes.top') }}">Top recettes</a></div>
-                <div><a href="{{ route('users.top') }}">Top internautes</a></div>
+    <!-- Modal HTML -->
 
-            </div>
-            <div class="col-md-7">
-                @yield('content')
-            </div>
+    <div class="row">
+        <div class="col-md-offset-1 col-md-2">
+            <div><a href="{{ route('home') }}">Accueil</a></div>
+            <div><a href="{{ route('recettes.index') }}">Mes recettes</a></div>
+            <div><a href="{{ route('recettes.top') }}">Top recettes</a></div>
+            <div><a href="{{ route('users.top') }}">Top internautes</a></div>
         </div>
-    </main>
+        <div class="col-md-7">
+            @yield('content')
+        </div>
+    </div>
 </div>
 </body>
 </html>

@@ -23,4 +23,5 @@ Route::get('/top_users', 'UserController@top')->name('users.top');
 Route::post('/recettes/{id}/update_note', 'RecetteController@update_note')->name('recettes.update_note');
 Route::resource('recettes', 'RecetteController');
 Route::resource('users', 'UserController');
-//Route::post('resizeImagePost', ['as' => 'resizeImagePost', 'uses' => 'ImageController@resizeImagePost']);
+Route::get('resizeImage', 'ImageController@resizeImage');
+Route::post('resizeImagePost', ['as' => 'resizeImagePost', 'uses' => 'ImageController@resizeImagePost']);

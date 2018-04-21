@@ -96,15 +96,17 @@ class RecetteController extends Controller
             $ingredient->fill($fields);
             $ingredient->save();
         }
-
+        $position = 0;
         //register etapes
         foreach ($request->etapes as $etape_description) {
             $etape = new Etape();
             $etape->recette_id = $recette->id;
+            $etape->position = ++$position;
             $etape->description = $etape_description;
             $etape->save();
         }
 
+        return redirect(route('recettes.index'));
     }
 
 }
