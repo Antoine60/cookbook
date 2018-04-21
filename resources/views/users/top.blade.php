@@ -7,6 +7,7 @@
         <tr>
             <th>Nom</th>
             <th>Note Moyenne</th>
+            <th>Nombre de recettes</th>
             <th>Meilleure recette</th>
         </tr>
         </thead>
@@ -15,6 +16,7 @@
             <tr>
                 <td><a href="users/{{$user->id}}">{{ $user->name }}</a></td>
                 <td>{{ number_format($user->avgRating,1) }} (sur {{$user->totalSumRating}} votes)</td>
+                <td>{{ $user->recettes->count() }}</td>
                 <td>
                     @isset($user->topRecette)
                         <a href="recettes/{{$user->topRecette->id}}">{{$user->topRecette->name}}</a>

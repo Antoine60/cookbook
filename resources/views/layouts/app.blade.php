@@ -10,7 +10,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Cookbook') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -20,6 +20,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <link href="/css/bootstrap-tagsinput.css" rel="stylesheet">
+    <link href="/css/custom.css" rel="stylesheet">
     <script type="text/javascript" src="/js/recette.js"></script>
 
     <!-- Fonts -->
@@ -74,7 +75,7 @@
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }} <span class="caret"></span>
+                                {{ Auth::user()->name }}
                             </a>
 
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -101,7 +102,9 @@
     <div class="row">
         <div class="col-md-offset-1 col-md-2">
             <div><a href="{{ route('home') }}">Accueil</a></div>
-            <div><a href="{{ route('recettes.index') }}">Mes recettes</a></div>
+            @if(Auth::id() != null)
+                <div><a href="{{ route('recettes.index') }}">Mes recettes</a></div>
+            @endif
             <div><a href="{{ route('recettes.top') }}">Top recettes</a></div>
             <div><a href="{{ route('users.top') }}">Top internautes</a></div>
         </div>
