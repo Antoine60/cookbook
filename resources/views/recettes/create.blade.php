@@ -9,7 +9,7 @@
 
         <div class="form-group">
             <label for="Photographie">Photographie</label>
-            <input type="file" name="photo">
+            <input type="file" name="photo" value="Parcourir">
         </div>
 
         <div class="form-group">
@@ -20,6 +20,16 @@
         <div class="form-group">
             <label for="country">Région</label>
             <select type="text" id="regionselect" name="region"></select>
+        </div>
+
+        <div class="form-group">
+            <label for="repas_type">Type de repas</label>
+            <select type="text" id="repas_type" name="repas_type">
+                <option value="Matin">Matin</option>
+                <option value="Midi">Midi</option>
+                <option value="En-Cas">En-Cas</option>
+                <option value="Soir">Soir</option>
+            </select>
         </div>
 
         <div class="form-group">

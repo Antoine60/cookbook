@@ -2,6 +2,28 @@
 
 @section('content')
     <h1>Les dernières recettes</h1>
+    <div class="row">
+        <div class="col-xs-4">
+            <select name="country">
+                <option value="country">Par Pays</option>
+                @foreach($countries as $country)
+                    <option value="{{$country}}">{{$country}}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="col-xs-4">
+            <select name="repas">
+                <option value="repas">Type de repas</option>
+                @foreach($repas_types as $repas_type)
+                    <option value="{{$repas_type}}">{{$repas_type}}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="col-xs-4">
+            <input type="text" placeholder="search" name="search"/>
+        </div>
+    </div>
+
     @foreach($recettes->sortByDesc('created_at') as $recette)
         <div class="col-xs-4">
             <div class="panel panel-default">

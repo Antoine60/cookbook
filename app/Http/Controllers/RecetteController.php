@@ -17,7 +17,17 @@ class RecetteController extends Controller
     public function all()
     {
         $recettes = Recette::all();
-        return view('home', ['recettes' => $recettes]);
+        $countries = $repas_type = [];
+        foreach ($recettes as $recette) {
+            if (!in_array($recette->pays, $countries) && !empty($recette->pays)) {
+                $countries[] = $recette->pays;
+            }
+            if (!in_array($recette->type_repas, $repas_type) && !empty($recette->type_repas)) {
+                $repas_type[] = $recette->type_repas;
+            }
+        }
+        sort($countries);
+        return view('home', ['countries' => $countries, 'repas_types' => $repas_type, 'recettes' => $recettes]);
     }
 
     public function update_note(Request $request, $id)
@@ -52,10 +62,22 @@ class RecetteController extends Controller
     {
         $user = User::find(Auth::user()->id);
         $recettes = $user->recettes;
-        return view('recettes/index', ['recettes' => $recettes]);
+        $countries = $repas_type = [];
+        foreach ($recettes as $recette) {
+            if (!in_array($recette->pays, $countries) && !empty($recette->pays)) {
+                $countries[] = $recette->pays;
+            }
+            if (!in_array($recette->type_repas, $repas_type) && !empty($recette->type_repas)) {
+                $repas_type[] = $recette->type_repas;
+            }
+        }
+        return view('recettes.index', ['countries' => $countries, 'repas_types' => $repas_type, 'recettes' => $recettes]);
+
     }
 
-    public function show($id)
+
+    public
+    function show($id)
     {
         $recette = Recette::findOrFail($id);
         $canVote = 0;
@@ -65,12 +87,14 @@ class RecetteController extends Controller
 
     }
 
-    public function create()
+    public
+    function create()
     {
         return view('recettes/create');
     }
 
-    public function store(Request $request)
+    public
+    function store(Request $request)
     {
         //register recette
         $recette = new Recette();
