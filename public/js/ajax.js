@@ -12,6 +12,9 @@ $(function () {
         case '/top':
             customUrl = '/ajax?q=top';
             break;
+        case '/':
+            customUrl = '/ajax?q=last';
+            break;
     }
     $.ajax({
         url: customUrl

@@ -42,6 +42,9 @@ class RecetteController extends Controller
                     return $item->averageRating;
                 });
                 break;
+            case 'last':
+                $modelRecette = Recette::orderBy('created_at', 'desc');
+                break;
         }
         if (isset($modelRecette)) {
             if (isset($search)) {
@@ -80,7 +83,7 @@ class RecetteController extends Controller
             }
         }
         sort($countries);
-        return view('home', ['countries' => $countries, 'repas_types' => $repas_type, 'recettes' => $recettes]);
+        return view('home', ['countries' => $countries, 'repas_types' => $repas_type]);
     }
 
     public
