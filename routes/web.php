@@ -10,3 +10,4 @@ Route::resource('recettes', 'RecetteController');
 Route::resource('users', 'UserController');
 Route::get('resizeImage', 'ImageController@resizeImage');
 Route::post('resizeImagePost', ['as' => 'resizeImagePost', 'uses' => 'ImageController@resizeImagePost']);
+Route::get('/ajax', 'RecetteController@ajax');

@@ -112,6 +112,8 @@
             @yield('content')
         </div>
     </div>
+    <script type="text/javascript" src="/js/ajax.js"></script>
+
 </div>
 </body>
 </html>

@@ -8,13 +8,59 @@ use App\Recette;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Intervention\Image\Image;
 use Intervention\Image\ImageManager;
 use willvincent\Rateable\Rating;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class RecetteController extends Controller
 {
-    public function all()
+
+    public function paginate($items, $perPage = 6, $page = null, $options = [])
+    {
+        $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
+        $items = $items instanceof Collection ? $items : Collection::make($items);
+        return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
+    }
+
+    public function ajax(Request $request)
+    {
+        $q = $request->query('q');
+        $page = $request->query('page');
+        $search = $request->query('s');
+        $repas = $request->query('r');
+        $pays = $request->query('c');
+        $recettes = [];
+
+        switch ($q) {
+            case 'currentUser':
+                $modelRecette = Recette::where('user_id', '=', Auth::user()->id);
+        }
+
+        if (isset($search)) {
+            $modelRecette = $modelRecette->where('name', 'like', '%' . $search . '%');
+        }
+        if (!empty($repas)) {
+            $modelRecette = $modelRecette->where('type_repas', $repas);
+        }
+        if (!empty($pays)) {
+            $modelRecette = $modelRecette->where('pays', $pays);
+
+        }
+
+        $recettes = $modelRecette->get();
+
+        $recettes = $this->paginate($recettes);
+        if ($recettes->count()) {
+            return view('recettes.ajax', ['recettes' => $recettes, 'page' => $page]);
+        } else {
+            abort(404, 'No more results found');
+        }
+    }
+
+    public
+    function all()
     {
         $recettes = Recette::all();
         $countries = $repas_type = [];
@@ -30,7 +76,8 @@ class RecetteController extends Controller
         return view('home', ['countries' => $countries, 'repas_types' => $repas_type, 'recettes' => $recettes]);
     }
 
-    public function update_note(Request $request, $id)
+    public
+    function update_note(Request $request, $id)
     {
 
         $recette = Recette::find($id);
@@ -48,17 +95,19 @@ class RecetteController extends Controller
         return redirect(route('recettes.show', ['recette' => $id]));
     }
 
-    public function top()
+    public
+    function top()
     {
         $recettes = Recette::all();
 
         $custom = $recettes->sortByDesc(function ($item) {
-            return $item->userAverageRating;
+            return $item->averageRating;
         })->values();
         return view('recettes/top', ['recettes' => $custom]);
     }
 
-    public function index()
+    public
+    function index()
     {
         $user = User::find(Auth::user()->id);
         $recettes = $user->recettes;
@@ -71,7 +120,7 @@ class RecetteController extends Controller
                 $repas_type[] = $recette->type_repas;
             }
         }
-        return view('recettes.index', ['countries' => $countries, 'repas_types' => $repas_type, 'recettes' => $recettes]);
+        return view('recettes.index', ['countries' => $countries, 'repas_types' => $repas_type]);
 
     }
 
