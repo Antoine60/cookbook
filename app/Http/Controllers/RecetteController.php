@@ -36,20 +36,27 @@ class RecetteController extends Controller
         switch ($q) {
             case 'currentUser':
                 $modelRecette = Recette::where('user_id', '=', Auth::user()->id);
+                break;
+            case 'top':
+                $recettes = Recette::all()->sortByDesc(function ($item) {
+                    return $item->averageRating;
+                });
+                break;
         }
-
-        if (isset($search)) {
-            $modelRecette = $modelRecette->where('name', 'like', '%' . $search . '%');
+        if (isset($modelRecette)) {
+            if (isset($search)) {
+                $modelRecette = $modelRecette->where('name', 'like', '%' . $search . '%');
+            }
+            if (!empty($repas)) {
+                $modelRecette = $modelRecette->where('type_repas', $repas);
+            }
+            if (!empty($pays)) {
+                $modelRecette = $modelRecette->where('pays', $pays);
+            }
+            if (!$modelRecette instanceof Collection) {
+                $recettes = $modelRecette->get();
+            }
         }
-        if (!empty($repas)) {
-            $modelRecette = $modelRecette->where('type_repas', $repas);
-        }
-        if (!empty($pays)) {
-            $modelRecette = $modelRecette->where('pays', $pays);
-
-        }
-
-        $recettes = $modelRecette->get();
 
         $recettes = $this->paginate($recettes);
         if ($recettes->count()) {
@@ -98,12 +105,7 @@ class RecetteController extends Controller
     public
     function top()
     {
-        $recettes = Recette::all();
-
-        $custom = $recettes->sortByDesc(function ($item) {
-            return $item->averageRating;
-        })->values();
-        return view('recettes/top', ['recettes' => $custom]);
+        return view('recettes/top');
     }
 
     public

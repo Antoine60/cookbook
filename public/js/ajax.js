@@ -7,7 +7,11 @@ $(function () {
 
     switch (window.location.pathname) {
         case '/recettes':
-            customUrl = '/ajax?q=currentUser'
+            customUrl = '/ajax?q=currentUser';
+            break;
+        case '/top':
+            customUrl = '/ajax?q=top';
+            break;
     }
     $.ajax({
         url: customUrl
@@ -56,7 +60,7 @@ $(function () {
             }
         });
     });
-    
+
     $("#search").bind("keyup focus", debounce(function () {
         search = $("#search").val();
         $.ajax({
