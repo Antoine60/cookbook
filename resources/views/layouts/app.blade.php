@@ -17,11 +17,12 @@
 
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <link href="/css/bootstrap-tagsinput.css" rel="stylesheet">
     <link href="/css/custom.css" rel="stylesheet">
-    <script type="text/javascript" src="/js/recette.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.4/css/mdb.min.css" rel="stylesheet">
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -31,20 +32,23 @@
     {{--<link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
 </head>
 <body>
+
+
 <div class="content">
-    <div id="myModal" class="modal fade bd-example-modal-lg">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-header">
-                <h4 class="modal-title">Nouvelle recette</h4>
-            </div>
+    <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
-                <!-- Content will be loaded here from "remote.php" file -->
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
+                <div class="modal-header">
+                    <h4 class="modal-title">Nouvelle recette</h4>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 </div>
 <div id="app">
 
@@ -60,11 +64,6 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav mr-auto">
-
-                </ul>
-
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
                     <!-- Authentication Links -->
@@ -100,7 +99,7 @@
     <!-- Modal HTML -->
 
     <div class="row">
-        <div class="col-md-offset-1 col-md-2">
+        <div class="col-md-offset-1 col-md-2 menu">
             <div><a href="{{ route('home') }}">Accueil</a></div>
             @if(Auth::id() != null)
                 <div><a href="{{ route('recettes.index') }}">Mes recettes</a></div>
@@ -112,8 +111,21 @@
             @yield('content')
         </div>
     </div>
-    <script type="text/javascript" src="/js/ajax.js"></script>
+
 
 </div>
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.4/js/mdb.min.js"></script>
+
+<script type="text/javascript" src="/js/recette.js"></script>
+
+<script type="text/javascript" src="/js/ajax.js"></script>
 </body>
 </html>

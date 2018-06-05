@@ -16,6 +16,7 @@ $(function () {
             customUrl = '/ajax?q=last';
             break;
     }
+
     $.ajax({
         url: customUrl
     })
@@ -52,28 +53,39 @@ $(function () {
 
     $("#repas").change(function () {
         repas = $("#repas").val();
+        $('.loader-spinner').fadeIn(400);
+
         $.ajax({
             url: customUrl + '&s=' + search + '&c=' + country + '&r=' + repas,
             success: function (data) {
                 var offset = 1;
                 $('.content-ajax').html(data);
+                $('.loader-spinner').fadeOut(400);
+
             },
             error: function (resultat, statut, erreur) {
                 $('.content-ajax').html('No results');
+                $('.loader-spinner').fadeOut(400);
+
             }
         });
     });
 
     $("#search").bind("keyup focus", debounce(function () {
         search = $("#search").val();
+        $('.loader-spinner').fadeIn(400);
         $.ajax({
             url: customUrl + '&s=' + search + '&c=' + country + '&r=' + repas,
             success: function (data) {
                 var offset = 1;
                 $('.content-ajax').html(data);
+                $('.loader-spinner').fadeOut(400);
+
             },
             error: function (resultat, statut, erreur) {
                 $('.content-ajax').html('No results');
+                $('.loader-spinner').fadeOut(400);
+
             }
         });
     }, 500));

@@ -1,3 +1,7 @@
+body {
+    font-family: "Source Sans Pro";
+}
+
 .table td, .table th {
     text-align: center;
 }
@@ -23,5 +27,103 @@
 .loader-spinner {
     background: transparent url('../images/loading_spinner.gif') center no-repeat;
     height: 200px;
+}
+
+h1 {
+    color: #393c6d;
+}
+
+.menu a {
+    color: #393c6d;
+    font-size: 18px;
+    font-weight: 600;
+    transiion-delay: 0s;
+    transistion-duration: 0.15s;
+}
+
+.card-body {
+    border: none;
+}
+
+.card-header {
+    text-align: center;
+}
+
+.card-footer .rate {
+    float: right;
+    color: #f47321;
 
 }
+
+.card-footer {
+    border-top: 0;
+}
+
+.card-container:hover .card,
+.card-container:focus .card {
+    transform: scale(1.2);
+}
+
+.border-cookbook {
+    border-width: 2px;
+}
+
+.menu a:hover {
+    text-decoration-line: none;
+    color: #f47321;
+}
+
+select.crs-country {
+    width: 100%;
+}
+
+input#quantityValue {
+    width: 30%;
+}
+
+.card-container {
+    padding: 10px;
+    height: 300px;
+
+}
+
+.type_repas {
+    float: right;
+    color: #f47321;
+}
+
+.card {
+    border-color: #f47321 !important;
+    border-width: 2px !important;
+    border-radius: 1px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    transition: all .5s;
+
+}
+
+.card-header {
+    color: #f47321;
+    font-size: 16px;
+    border: none;
+}
+
+.card::before {
+    content: "";
+    display: none;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(52, 73, 94, 0.75);
+}
+
+.card-container :hover .card:before,
+.card-container :focus .card:before {
+    display: block;
+}
+

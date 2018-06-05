@@ -7,9 +7,7 @@
     <div class="row">
         <div class="col-xs-4">
             @if ($canVote)
-                <div class="row">
-                    Votre note
-                    :
+                    Votre note :
                     <form method="POST" action="{{route('recettes.update_note', ['id' => $recette->id])}}">
                         @csrf
                         <select name="note" onchange="this.form.submit();">
@@ -20,7 +18,6 @@
                             @endfor
                         </select>
                     </form>
-                </div>
             @endif
             <div class="row">
                 Note globale : {!! number_format($recette->averageRating, 1) !!} : ( {{ $recette->sumRating }} votes)
@@ -42,16 +39,17 @@
         </div>
     </div>
     <div class="row">
-        Mots clés :
-        <span class="label label-default">
-        {{ $recette->keyswords  }}
-        </span>
+
     </div>
     <div class="row">
         <div class="col-xs-4">
+          Mots clés :
+          <span class="label label-default">
+          {{ $recette->keyswords  }}
+          </span>
+          <br>
             Pays : <span class="label label-default">{{ $recette->pays }}</span>
-        </div>
-        <div class="col-xs-4">
+            <br>
             Région : <span class="label label-default">{{ $recette->region }}</span>
         </div>
     </div>
