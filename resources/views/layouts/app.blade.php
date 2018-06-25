@@ -55,8 +55,9 @@
 
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
         <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name', 'Laravel') }}
+            <a class="navbar-brand navbar-left" href="{{ url('/') }}">
+                <img src="{{ asset('images/logo.png') }}" />
+            
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -65,7 +66,7 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Right Side Of Navbar -->
-                <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav ml-auto navbar-right">
                     <!-- Authentication Links -->
                     @guest
                     <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
@@ -107,7 +108,7 @@
             <div><a href="{{ route('recettes.top') }}">Top recettes</a></div>
             <div><a href="{{ route('users.top') }}">Top internautes</a></div>
         </div>
-        <div class="col-md-7">
+        <div class="col-md-7 div-content-recettes">
             @yield('content')
         </div>
     </div>

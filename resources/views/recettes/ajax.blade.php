@@ -1,8 +1,10 @@
 <div class="row">
     @foreach($recettes as $recette)
-        <div class="col-xs-4 card-container">
-            <div class="card card-image border-cookbook rounded"
-                 style="background-image: url({{ $recette->image }}); max-width: 22rem;">
+        <div class="col-xs-4 card-container parent">
+            <div class="card  border-cookbook rounded"
+                 >
+                 <div class="child card-image" style="background-image: url({{ $recette->image }}); max-width: 22rem;"></div>
+                 <div class="div-background-black"></div>
                 <div class="card-header bg-transparent">
                     {{$recette->name}}
                 </div>
@@ -11,7 +13,7 @@
                 </div>
                 <div class="card-footer bg-transparent">
                     <p class="mb-0">
-                        <a href="recettes/{{$recette->id}}">Détail</a>
+                        <a href="recettes/{{$recette->id}}"><button class="btn btn-details">Détail</button></a>
 
                         <span class="rate">{!! number_format($recette->averageRating, 1) !!}
                             / 5

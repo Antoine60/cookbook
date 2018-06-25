@@ -2,7 +2,7 @@
 
 @section('content')
     <h1>Mes recettes</h1>
-    <div class="row">
+    <div class="row form-inline md-form form-sm">
         <div class="col-xs-4">
             <select class="mdb-select" id="country" name="country">
                 <option value="">Par Pays</option>
@@ -29,7 +29,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-4">
+        <div class="col-xs-4 col-xs-offset-8">
             <button id="addRecetteForm" data-toggle="modal" data-toggle="modal" data-target="#myModal" class="btn">
                 Ajout d'une recette
             </button>

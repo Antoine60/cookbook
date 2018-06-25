@@ -56,25 +56,25 @@
                     <option value="L">L</option>
                 </select>
             </div>
-            <button type="submit" id="addIngredient" class="btn">Ajouter un ingrédient</button>
+            <button type="submit" id="addIngredient " class="btn col-md-12">Ajouter un ingrédient</button>
         </div>
         <div class="col-md-4">
             <label>Etapes</label>
             <ol id="listStep"></ol>
             <div class="row">
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-12">
                     <textarea name="description" id="etapeContent" rows="4" cols="30"></textarea>
                 </div>
             </div>
             <div class="row">
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-12">
                     <button type="submit" id="addEtape" class="btn">Ajouter une étape</button>
                 </div>
             </div>
         </div>
         <span id="hiddenInputs"></span>
-        <div class="col-md-12 form-group">
-            <button type="submit" class="btn btn-success">Valider la recette</button>
+        <div class="col-md-4 col-md-offset-4  form-group">
+            <button type="submit" class="btn btn-valider-recette">Valider la recette</button>
         </div>
 </form>
 
