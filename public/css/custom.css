@@ -14,10 +14,11 @@ body {
     overflow: hidden;
     text-indent: -999em;
     width: 110px;
+    margin-top : -5px;
 }
 
 .star-ratings-sprite-rating {
-    background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/2605/star-rating-sprite.png") repeat-x;
+    background: url("../images/star-rating-sprite.png") repeat-x;
     background-position: 0 100%;
     float: left;
     height: 21px;
@@ -198,9 +199,7 @@ select option{
     font-size : 10px !important;
 }
 
-.card-footer a{
-    margin-left: -55px;
-}
+
 
 .div-content-recettes td,
 .div-content-recettes th{
@@ -214,9 +213,10 @@ margin-right : auto;
 }
 
 .modal-dialog .modal-body button{
-    background-color: #22f7ff !important;
+    background-color: #00acb2 !important;
     font-size : 10px !important;
     width : 100%;
+    box-shadow : none !important;
 }
 .modal-dialog .modal-body button:hover,
 .modal-dialog .modal-body button:focus{
@@ -224,6 +224,8 @@ margin-right : auto;
 }
 #addRecetteForm{
     background-color: #f47321;
+    box-shadow: none !important;
+    font-size : 12px;
 }
 #addRecetteForm:hover,
 #addRecetteForm:focus{
@@ -232,4 +234,55 @@ margin-right : auto;
 }
 .modal-dialog .modal-body .btn-valider-recette{
     background-color : #f47321 !important;
+    font-size : 12px !important;
+}
+
+.div-text-align{
+    text-align : left;
+
+}
+
+.div-ingredients{
+    text-align : center;
+    margin-top : 40px;
+}
+.div-ingredients ul{
+    list-style-type: none;
+    padding-left: 0px;
+}
+
+.div-etapes-title{
+    margin-left: auto;
+    margin-right : auto;
+}
+.div-etapes{
+    margin-top : 40px;
+}
+.div-etapes ol{
+    text-align :left;
+}
+
+.div-note-globale{
+    margin-top : 30px;
+    padding-left: 15px;
+}
+
+.mb-0{
+    text-align : left;
+}
+
+.a-details{
+    color: #f9f9f9;
+}
+.a-details:hover,
+.a-details:focus{
+    color: #00acb2;
+}
+
+.card-footer .badge-info{
+    background-color: #00acb2 !important;
+}
+
+.badge{
+    box-shadow: none !important;
 }

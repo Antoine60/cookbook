@@ -56,8 +56,8 @@
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
         <div class="container">
             <a class="navbar-brand navbar-left" href="{{ url('/') }}">
-                <img src="{{ asset('images/logo.png') }}" />
-            
+                <img src="{{ asset('images/logo.png') }}"/>
+
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -109,6 +109,15 @@
             <div><a href="{{ route('users.top') }}">Top internautes</a></div>
         </div>
         <div class="col-md-7 div-content-recettes">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             @yield('content')
         </div>
     </div>
