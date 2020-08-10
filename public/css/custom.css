@@ -1,3 +1,7 @@
+body {
+    font-family: "Source Sans Pro";
+}
+
 .table td, .table th {
     text-align: center;
 }
@@ -10,10 +14,11 @@
     overflow: hidden;
     text-indent: -999em;
     width: 110px;
+    margin-top : -5px;
 }
 
 .star-ratings-sprite-rating {
-    background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/2605/star-rating-sprite.png") repeat-x;
+    background: url("../images/star-rating-sprite.png") repeat-x;
     background-position: 0 100%;
     float: left;
     height: 21px;
@@ -23,5 +28,261 @@
 .loader-spinner {
     background: transparent url('../images/loading_spinner.gif') center no-repeat;
     height: 200px;
+}
 
+h1 {
+    color: #393c6d;
+}
+
+.menu a {
+    color: #393c6d;
+    font-size: 18px;
+    font-weight: 600;
+    transiion-delay: 0s;
+    transistion-duration: 0.15s;
+}
+
+.card-body {
+    border: none;
+}
+
+.card-header {
+    text-align: center;
+}
+
+.card-footer .rate {
+    float: right;
+    color: #f9f9f9;
+
+}
+
+.card-footer {
+    border-top: 0;
+}
+
+.parent:hover .child,
+.parent:focus .child {
+    transform: scale(1.2);
+}
+
+.child{
+    opacity : 0.7;
+    width : inherit;
+    height: inherit;
+    position :absolute !important;
+    max-width : none !important;
+}
+
+.card-header,
+.card-body,
+.card-footer{
+    z-index: 10;
+}
+
+
+.border-cookbook {
+    border-width: 2px;
+}
+
+.menu a:hover {
+    text-decoration-line: none;
+    color: #f47321;
+}
+
+select.crs-country {
+    width: 100%;
+}
+
+input#quantityValue {
+    width: 30%;
+}
+
+.card-container {
+    padding: 10px;
+    height: 300px;
+
+}
+
+.type_repas {
+    float: right;
+    color: #f47321;
+}
+.card{
+    overflow: hidden;
+}
+.card, .child {
+    border-color: #f47321 !important;
+    border-width: 1px !important;
+    border-radius: 1px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    transition: all .5s;
+
+}
+
+.card-header {
+    color: #f9f9f9;
+    font-size: 16px;
+    border: none;
+}
+
+.card::before {
+    content: "";
+    display: none;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(52, 73, 94, 0.75);
+}
+
+.card-container :hover .card:before,
+.card-container :focus .card:before {
+    display: block;
+}
+
+.navbar-brand img{
+    height : inherit;
+}
+
+.navbar{
+    background: #f9f9f9;
+    font-size: 20px;
+    border-radius: 0px;
+    margin-bottom : 0px;
+    z-index:100;
+}
+.navbar-light .navbar-nav .nav-link {
+    color : #f47321;
+}
+
+.menu{
+    margin-top : 50px;
+}
+
+.menu a{
+    color : #00acb2;
+    line-height: 3;
+
+}
+
+.div-content-recettes{
+    background: #f9f9f9;
+    min-height: 800px;
+    text-align : center;
+}
+
+select{
+    border: none;
+    background-color: inherit;
+}
+select option{
+    background-color: inherit;
+}
+
+.div-background-black{
+    background: black;
+    width: 100%;
+    height: 100%;
+    opacity:0.5;
+    position : absolute;
+}
+
+.btn-details{
+    border : none;
+    background-color: #22f7ff;
+    padding: 4px 8px !important;
+    font-size : 10px !important;
+}
+
+
+
+.div-content-recettes td,
+.div-content-recettes th{
+    font-size : 14px;
+}
+
+.modal-dialog{
+margin-top : 300px;
+margin-left: auto;
+margin-right : auto;
+}
+
+.modal-dialog .modal-body button{
+    background-color: #00acb2 !important;
+    font-size : 10px !important;
+    width : 100%;
+    box-shadow : none !important;
+}
+.modal-dialog .modal-body button:hover,
+.modal-dialog .modal-body button:focus{
+    color : white;
+}
+#addRecetteForm{
+    background-color: #f47321;
+    box-shadow: none !important;
+    font-size : 12px;
+}
+#addRecetteForm:hover,
+#addRecetteForm:focus{
+    color : #fff;
+
+}
+.modal-dialog .modal-body .btn-valider-recette{
+    background-color : #f47321 !important;
+    font-size : 12px !important;
+}
+
+.div-text-align{
+    text-align : left;
+
+}
+
+.div-ingredients{
+    text-align : center;
+    margin-top : 40px;
+}
+.div-ingredients ul{
+    list-style-type: none;
+    padding-left: 0px;
+}
+
+.div-etapes-title{
+    margin-left: auto;
+    margin-right : auto;
+}
+.div-etapes{
+    margin-top : 40px;
+}
+.div-etapes ol{
+    text-align :left;
+}
+
+.div-note-globale{
+    margin-top : 30px;
+    padding-left: 15px;
+}
+
+.mb-0{
+    text-align : left;
+}
+
+.a-details{
+    color: #f9f9f9;
+}
+.a-details:hover,
+.a-details:focus{
+    color: #00acb2;
+}
+
+.card-footer .badge-info{
+    background-color: #00acb2 !important;
+}
+
+.badge{
+    box-shadow: none !important;
 }

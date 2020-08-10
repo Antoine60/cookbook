@@ -2,7 +2,7 @@ $(document).on('click', '#addRecetteForm', function (e) {
     $("#myModal").on('show.bs.modal', function (event) {
         $.ajax({
             url: "recettes/create", success: function (result) {
-                $("#myModal .modal-content").html(result);
+                $("#myModal .modal-body").html(result);
                 $("#myModal").modal('show');
             }
         })

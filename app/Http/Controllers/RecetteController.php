@@ -48,7 +48,10 @@ class RecetteController extends Controller
         }
         if (isset($modelRecette)) {
             if (isset($search)) {
-                $modelRecette = $modelRecette->where('name', 'like', '%' . $search . '%');
+                $modelRecette = $modelRecette->where(function ($query) use ($search) {
+                    $query->where('name', 'like', '%' . $search . '%')
+                        ->orWhere('keyswords', 'like', '%' . $search . '%');
+                });
             }
             if (!empty($repas)) {
                 $modelRecette = $modelRecette->where('type_repas', $repas);
@@ -150,6 +153,14 @@ class RecetteController extends Controller
     public
     function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'photo' => 'required',
+            'pays' => 'required',
+            'region' => 'required',
+            'keyswords' => 'required',
+        ]);
+
         //register recette
         $recette = new Recette();
         $fields = $request->only($recette->getFillable());

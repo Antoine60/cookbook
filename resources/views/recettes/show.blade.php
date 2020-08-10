@@ -4,12 +4,10 @@
     <div class="row center-block text-center">
         <h1>{{ $recette->name }}</h1>
     </div>
-    <div class="row">
-        <div class="col-xs-4">
+    <div class="row div-note-globale">
+        <div class="col-xs-6">
             @if ($canVote)
-                <div class="row">
-                    Votre note
-                    :
+                    Votre note :
                     <form method="POST" action="{{route('recettes.update_note', ['id' => $recette->id])}}">
                         @csrf
                         <select name="note" onchange="this.form.submit();">
@@ -20,21 +18,20 @@
                             @endfor
                         </select>
                     </form>
-                </div>
             @endif
-            <div class="row">
-                Note globale : {!! number_format($recette->averageRating, 1) !!} : ( {{ $recette->sumRating }} votes)
-            </div>
-            <div class="row">
-                <div class="star-ratings-sprite"><span
+            <div class="row ">
+                Note globale : <div class="star-ratings-sprite"><span
                             style="width:{!! number_format($recette->averageRating*20) !!}%"
-                            class="star-ratings-sprite-rating"></span></div>
+                            class="star-ratings-sprite-rating"></span></div> ( {{ $recette->sumRating }} votes)
+
             </div>
+
+
         </div>
 
-        <div class="col-xs-offset-4 col-xs-4">
+        <div class="col-xs-offset-2 col-xs-4">
             <div class="row">
-                Auteur : {{ $recette->user->name }}
+                <u>Auteur</u> : {{ $recette->user->name }}
             </div>
             <div class="row">
                 Ajouté le {{ $recette->created_at }}
@@ -42,20 +39,21 @@
         </div>
     </div>
     <div class="row">
-        Mots clés :
-        <span class="label label-default">
-        {{ $recette->keyswords  }}
-        </span>
+
     </div>
-    <div class="row">
-        <div class="col-xs-4">
+    <div class="row div-text-align">
+        <div class="col-xs-4 div-tags">
+          Mots clés :
+          <span class="label label-default">
+          {{ $recette->keyswords  }}
+          </span>
+          <br>
             Pays : <span class="label label-default">{{ $recette->pays }}</span>
-        </div>
-        <div class="col-xs-4">
+            <br>
             Région : <span class="label label-default">{{ $recette->region }}</span>
         </div>
     </div>
-    <div class="row">
+    <div class="row div-ingredients">
         <div class="col-xs-6">
             <h2>Ingrédients</h2>
             <ul>
@@ -71,8 +69,8 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <h2>Etapes</h2>
+    <div class="row div-etapes">
+        <div class="div-etapes-title col-md-12"><h2>Etapes</h2></div>
         <ol>
             @foreach($recette->etapes->sortBy('position') as $etape)
                 <li>{{ $etape->description }}</li>
