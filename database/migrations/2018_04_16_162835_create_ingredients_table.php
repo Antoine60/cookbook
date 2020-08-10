@@ -17,7 +17,7 @@ class CreateIngredientsTable extends Migration
             $table->increments('id');
             $table->string('nom');
             $table->string('quantite');
-            $table->string('mesure');
+            $table->string('mesure')->nullable();
             $table->integer('recette_id');
             $table->timestamps();
         });

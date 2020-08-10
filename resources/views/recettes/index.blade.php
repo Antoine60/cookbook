@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Les dernières recettes</h1>
+    <h1>Mes recettes</h1>
     <div class="row">
         <div class="col-xs-4">
             <select id="country" name="country">
@@ -23,6 +23,28 @@
             <input type="text" id="search" placeholder="search" name="search"/>
         </div>
     </div>
+
     <div class="content-ajax">
     </div>
+    <div class="row">
+        <div class="col-xs-4">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <button id="addRecetteForm" data-toggle="modal" data-toggle="modal" data-target="#myModal" class="btn">
+                        Ajout
+                        d'une recette
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="loader-spinner"></div>
+
+
+
 @endsection
+
+

@@ -1,3 +1,16 @@
+$(document).on('click', '#addRecetteForm', function (e) {
+    $("#myModal").on('show.bs.modal', function (event) {
+        $.ajax({
+            url: "recettes/create", success: function (result) {
+                $("#myModal .modal-content").html(result);
+                $("#myModal").modal('show');
+            }
+        })
+        ;
+    });
+});
+
+
 $(document).on("keypress", 'form', function (e) {
     var code = e.keyCode || e.which;
     if (code == 13) {
@@ -5,11 +18,7 @@ $(document).on("keypress", 'form', function (e) {
         return false;
     }
 });
-$('#datepicker').datepicker({
-    autoclose: true,
-    format: 'dd-mm-yyyy'
-});
-$('#addEtape').on('click', function (e) {
+$(document).on('click', '#addEtape', function (e) {
     e.preventDefault();
     //TODO AJAX send to ETAPEController
     let etapeContent = $('#etapeContent').val();
@@ -17,9 +26,9 @@ $('#addEtape').on('click', function (e) {
     //ajouter input hidden
     $('#hiddenInputs').append('<input type="hidden" name="etapes[]" value=' + etapeContent + '>');
     $('#etapeContent').val("");
-})
+});
 
-$('#addIngredient').on('click', function (e) {
+$(document).on('click', '#addIngredient', function (e) {
     e.preventDefault();
     //TODO AJAX send to IngredientController
     let nameIngredient = $('#ingredientContent').val();
@@ -33,3 +42,5 @@ $('#addIngredient').on('click', function (e) {
     //ajouter input hidden
     $('#hiddenInputs').append('<input type="hidden" name="ingredients[]" value=' + nameIngredient + '-' + quantityValue + '-' + mesureValue + '>');
 })
+
+
