@@ -138,7 +138,7 @@ class RecetteController extends Controller
     {
         $recette = Recette::findOrFail($id);
         $canVote = 0;
-        if ($recette->user->id != \Auth::id())
+        if (null !== \Auth::id() && $recette->user->id != \Auth::id())
             $canVote = 1;
         return view('recettes.show', ['recette' => $recette, 'canVote' => $canVote]);
 
